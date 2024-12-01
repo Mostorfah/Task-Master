@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User's Todo Lists</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <div class="top">
+          <h1>Todos</h1>
+      
+          <a href="/logout">Logout</a>
+        </div>
+
+          <ul class="todos">
+          <% todos.forEach( el => { %>
+                  <li class='todoItem' data-id='<%=el._id%>'>
+                      <span class=' task <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                      <span class='del'> Delete </span>
+                  </li>
+          <% }) %>    
+          </ul>
+      
+          <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+      
+          <form action="/todos/createTodo" method='POST'>
+    
+            <div class="input-box">
+              <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+            </div>
+    
+              <input class="btn" type="submit">
+
+          </form>
+      </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
